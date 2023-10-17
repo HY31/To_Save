@@ -23,6 +23,5 @@ public class HarzardCylinder : MonoBehaviour
         {
             //충돌피해
         }
-
     }
 }
