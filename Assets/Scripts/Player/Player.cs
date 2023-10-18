@@ -19,6 +19,8 @@ public class Player : MonoBehaviour
 
     private PlayerStateMachine stateMachine; // 행동을 관리할 스테이트 머신
 
+    private Vector3 checkPoint; // 체크포인트, 부활 위치
+
     private void Awake()
     {
         AnimationData.Initialize();
@@ -30,6 +32,9 @@ public class Player : MonoBehaviour
         ForceReceiver = GetComponent<ForceReceiver>();
         
         stateMachine = new PlayerStateMachine(this);
+
+        // 체크포인트 초기화
+        checkPoint = new Vector3(0, 0, 0);
     }
 
     private void Start()
@@ -47,5 +52,10 @@ public class Player : MonoBehaviour
     private void FixedUpdate()
     {
         stateMachine.PhysicsUpdate();
+    }
+
+    public void SaveCheckPoint(Vector3 position)
+    {
+        checkPoint = position;
     }
 }
