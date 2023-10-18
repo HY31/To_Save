@@ -30,6 +30,12 @@ public class PlayerGroundedState : PlayerBaseState
     public override void PhysicsUpdate()
     {
         base.PhysicsUpdate();
+
+        if(!stateMachine.Player.Controller.isGrounded && stateMachine.Player.Controller.velocity.y < Physics.gravity.y* Time.fixedDeltaTime)
+        {
+            stateMachine.ChangeState(stateMachine.FallState);
+            return;
+        }
     }
 
     // 이게 GroundedState에 있는 이유 = 땅에 있을 때 동작하는 기능이기 때문이다. 공중에 있을 때는 다르게 동작해야함
@@ -43,6 +49,11 @@ public class PlayerGroundedState : PlayerBaseState
         stateMachine.ChangeState(stateMachine.IdleState);
 
         base.OnMoveCanceled(context);
+    }
+
+    protected override void OnJumpStarted(InputAction.CallbackContext context)
+    {
+        stateMachine.ChangeState(stateMachine.JumpState);
     }
 
     protected virtual void OnMove()
