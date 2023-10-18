@@ -1,13 +1,18 @@
 fileFormatVersion: 2
-guid: 6931721085b0f7947afeee99c9e82f37
+guid: df2999b57410d734dbc57c9331e030ea
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Non Metallic
+    second: {fileID: -5624726642823754363, guid: 7486b5209b69a604f81e555ca153a003, type: 3}
   materials:
     materialImportMode: 2
     materialName: 0
-    materialSearch: 1
+    materialSearch: 0
     materialLocation: 1
   animations:
     legacyGenerateAnimations: 4
