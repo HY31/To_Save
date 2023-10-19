@@ -15,7 +15,7 @@ public class SoundManager : MonoBehaviour
     public GameObject BgmMixer;
     public GameObject SfxMixer;
 
-    private static SoundManager instance;
+    public static SoundManager Instance;
 
     [Header("사운드 등록")]
     public Sound[] bgmSounds;
@@ -31,7 +31,15 @@ public class SoundManager : MonoBehaviour
 
     private void Awake()
     {
-        instance = this;
+        if (Instance == null)
+        {
+            Instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        else 
+        {
+            Destroy(gameObject);
+        }
 
         BgmMixer.GetComponent<Slider>().onValueChanged.AddListener(SetBgmVolume);
         SfxMixer.GetComponent<Slider>().onValueChanged.AddListener(setSfxVolume);

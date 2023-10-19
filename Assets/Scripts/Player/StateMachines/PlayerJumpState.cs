@@ -12,6 +12,7 @@ public class PlayerJumpState : PlayerAirState
         base.Enter();
 
         StartAnimation(stateMachine.Player.AnimationData.JumpParameterHash);
+        SoundManager.Instance.PlaySE("Jump");
     }
 
     public override void Exit()
