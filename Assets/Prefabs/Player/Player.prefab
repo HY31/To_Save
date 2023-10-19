@@ -165,7 +165,7 @@ Transform:
   - {fileID: 8270284701783015402}
   - {fileID: 4110977153012942452}
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &2107854501886631856
 MonoBehaviour:
@@ -189,6 +189,7 @@ MonoBehaviour:
     fallParameterName: Fall
     attackParameterName: '@Attack'
   <Weapon>k__BackingField: {fileID: 2308569422646121039}
+  cameraLookPoint: {fileID: 4110977153012942452}
 --- !u!114 &6736562896852470315
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -1,3 +1,4 @@
+using Cinemachine;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -13,7 +14,10 @@ public class SpawnManager : MonoBehaviour
     public SpawnPointData playerspawn;
     public int targetSpawnPointIndex;
 
+    [field: SerializeField] public CinemachineVirtualCamera vCam;
+
     private GameObject currentPlayer;
+
 
     private void Awake()
     {
@@ -46,6 +50,10 @@ public class SpawnManager : MonoBehaviour
         {
             SpawnPlayer(targetSpawnPointIndex);
         }
+
+        Player player = currentPlayer.GetComponent<Player>();
+        vCam.Follow = player.cameraLookPoint;
+        vCam.LookAt = player.cameraLookPoint;
     }
     public void SpawnPlayer(int spawnPointIndex)
     {
@@ -61,6 +69,7 @@ public class SpawnManager : MonoBehaviour
             }
             playerspawn = spawnPointData;
             currentPlayer = Instantiate(playerPrefab, spawnPosition, spawnRotation);
+
         }
     }
 }

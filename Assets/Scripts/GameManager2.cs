@@ -1,3 +1,4 @@
+using Cinemachine;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,9 +6,8 @@ using UnityEngine;
 public class GameManager2 : MonoBehaviour
 {
     public static GameManager2 Instance;
-    public GameObject Player;
 
-    public GameObject endingUI;
+    public GameObject endingUI;  
 
     private void Awake()
     {

@@ -30,7 +30,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 11
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &7947554180634661799
 MonoBehaviour:
@@ -44,10 +44,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d796632e6b9bda34ab4c07c2a5371ba3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawnPoints:
-  - {fileID: 4243528788222474617, guid: 43497fa2aadea694a93f38422340389b, type: 3}
-  - {fileID: 3002366721138407919, guid: 396538acc03107249901fea84f1b502b, type: 3}
-  - {fileID: 8949485302012293067, guid: 0fe7da00ff9719043a09c29d31206679, type: 3}
-  - {fileID: 8237320482768353217, guid: 0da9ba29f080a35499d0a0f2fc6cfce0, type: 3}
-  - {fileID: 2481254376981395701, guid: dd799183bb11906458d4d61af1545f7f, type: 3}
-  playerPrefab: {fileID: 0}
+  spawnPointDataList:
+  - {fileID: 11400000, guid: e47e8a673fff55c4788140d24ce63a89, type: 2}
+  - {fileID: 11400000, guid: 9859631026557fc4984ae6fcdfe90572, type: 2}
+  - {fileID: 11400000, guid: d9a335c780c4588468809d40ced99862, type: 2}
+  - {fileID: 11400000, guid: 0e47eea7c5e33274793029bcc3d40566, type: 2}
+  - {fileID: 11400000, guid: 461d850cd0b70324fba106e5dc28c542, type: 2}
+  playerPrefab: {fileID: 7262868273949945340, guid: df041f20156b0a344ae411a608f24cac, type: 3}
+  playerspawn: {fileID: 0}
+  targetSpawnPointIndex: 0
+  vCam: {fileID: 0}
