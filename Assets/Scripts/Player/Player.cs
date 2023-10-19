@@ -17,6 +17,10 @@ public class Player : MonoBehaviour
 
     public ForceReceiver ForceReceiver { get; private set; }
 
+    [field: SerializeField] public Weapon Weapon { get; private set; }
+
+    public Health Health { get; private set; }
+
     private PlayerStateMachine stateMachine; // 행동을 관리할 스테이트 머신
 
     private Vector3 checkPoint; // 체크포인트, 부활 위치
@@ -30,7 +34,8 @@ public class Player : MonoBehaviour
         Input = GetComponent<PlayerInput>();
         Controller = GetComponent<CharacterController>();
         ForceReceiver = GetComponent<ForceReceiver>();
-        
+        Health = GetComponent<Health>();
+
         stateMachine = new PlayerStateMachine(this);
 
         // 체크포인트 초기화
@@ -41,6 +46,8 @@ public class Player : MonoBehaviour
     {
         Cursor.lockState = CursorLockMode.Locked;
         stateMachine.ChangeState(stateMachine.IdleState);
+
+        Health.OnDie += OnDie;
     }
 
     private void Update()
@@ -52,6 +59,12 @@ public class Player : MonoBehaviour
     private void FixedUpdate()
     {
         stateMachine.PhysicsUpdate();
+    }
+
+    void OnDie()
+    {
+        Animator.SetTrigger("Die");
+        enabled = false;
     }
 
     public void SaveCheckPoint(Vector3 position)

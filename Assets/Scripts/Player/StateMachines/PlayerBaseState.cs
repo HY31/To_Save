@@ -47,15 +47,45 @@ public class PlayerBaseState : IState
     {
         PlayerInput input = stateMachine.Player.Input;
         input.PlayerActions.Move.canceled += OnMoveCanceled;
+        input.PlayerActions.Jump.started += OnJumpStarted;
+
+        input.PlayerActions.Attack.performed += OnAttackPerformed;
+        input.PlayerActions.Attack.canceled += OnAttackCanceled;
+
+        input.PlayerActions.Interact.started += OnInteractStarted;
     }
 
     protected virtual void RemoveInputActionsCallbacks()
     {
         PlayerInput input = stateMachine.Player.Input;
         input.PlayerActions.Move.canceled -= OnMoveCanceled;
+        input.PlayerActions.Jump.started -= OnJumpStarted;
+
+        input.PlayerActions.Attack.performed -= OnAttackPerformed;
+        input.PlayerActions.Attack.canceled -= OnAttackCanceled;
+    }
+
+    protected virtual void OnJumpStarted(InputAction.CallbackContext context)
+    {
+
     }
 
     protected virtual void OnMoveCanceled(InputAction.CallbackContext context)
+    {
+
+    }
+
+    protected virtual void OnAttackPerformed(InputAction.CallbackContext context)
+    {
+        stateMachine.IsAttacking = true;
+    }
+
+    protected virtual void OnAttackCanceled(InputAction.CallbackContext context)
+    {
+        stateMachine.IsAttacking = false;
+    }
+
+    protected virtual void OnInteractStarted(InputAction.CallbackContext context)
     {
 
     }
