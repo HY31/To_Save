@@ -22,7 +22,6 @@ public class Cloud : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        Debug.Log("Ãæµ¹");
         if(collision.gameObject.tag == "Player")
         {
             ObstacleManager.Instance.StartCoroutine("spawnCloud", 

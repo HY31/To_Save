@@ -11,4 +11,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/JGScene.unity
     guid: 5fa5742f92ae1374ca5c9098cae4fba2
+  - enabled: 1
+    path: Assets/Scenes/JGScene2.unity
+    guid: 94aaa5e81aad4ef48804b821fb9d871d
+  - enabled: 1
+    path: Assets/Scenes/JGScene3.unity
+    guid: 03c89e2c075ea6643857816ada4a0f98
   m_configObjects: {}

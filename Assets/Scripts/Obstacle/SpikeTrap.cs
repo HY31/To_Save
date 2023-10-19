@@ -19,7 +19,7 @@ public class SpikeTrap : MonoBehaviour
     }
     void Start()
     {
-        trap.transform.position += new Vector3(0, 1, 0) * moveSpeed * Time.deltaTime;
+        //trap.transform.position += new Vector3(0, 1, 0) * moveSpeed * Time.deltaTime;
     }
 
     private void OnCollisionEnter(Collision collision)
