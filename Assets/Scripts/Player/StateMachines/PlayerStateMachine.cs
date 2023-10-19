@@ -18,7 +18,7 @@ public class PlayerStateMachine : StateMachine
     public float MovementSpeed { get; private set; }
     public float RotationDamping { get; private set; }
     public float MovementSpeedModifier { get; set; } = 1f;
-    
+  
     public float JumpForce { get; set; }
 
     public bool IsAttacking { get; set; }

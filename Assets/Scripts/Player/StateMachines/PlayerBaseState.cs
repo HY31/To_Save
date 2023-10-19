@@ -51,9 +51,9 @@ public class PlayerBaseState : IState
 
         input.PlayerActions.Attack.performed += OnAttackPerformed;
         input.PlayerActions.Attack.canceled += OnAttackCanceled;
-    }
 
-    
+        input.PlayerActions.Interact.started += OnInteractStarted;
+    }
 
     protected virtual void RemoveInputActionsCallbacks()
     {
@@ -83,6 +83,11 @@ public class PlayerBaseState : IState
     protected virtual void OnAttackCanceled(InputAction.CallbackContext context)
     {
         stateMachine.IsAttacking = false;
+    }
+
+    protected virtual void OnInteractStarted(InputAction.CallbackContext context)
+    {
+
     }
 
     private void ReadMovementInput()
@@ -145,25 +150,5 @@ public class PlayerBaseState : IState
     protected void StopAnimation(int animationHash)
     {
         stateMachine.Player.Animator.SetBool(animationHash, false);
-    }
-
-    protected float GetNormalizedTime(Animator animator, string tag)
-    {
-        AnimatorStateInfo currentInfo = animator.GetCurrentAnimatorStateInfo(0);
-        AnimatorStateInfo nextInfo = animator.GetNextAnimatorStateInfo(0);
-
-        if(animator.IsInTransition(0) && nextInfo.IsTag(tag))
-        {
-            return nextInfo.normalizedTime;
-        }
-        else if(!animator.IsInTransition(0) && currentInfo.IsTag(tag))
-        {
-            return currentInfo.normalizedTime;
-        }
-        else
-        {
-            return 0;
-        }
-        
     }
 }
