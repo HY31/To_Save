@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class SpawnManager : MonoBehaviour
 {
@@ -10,6 +11,8 @@ public class SpawnManager : MonoBehaviour
 
     public GameObject playerPrefab;
     public SpawnPointData playerspawn;
+    public int targetSpawnPointIndex;
+
     private GameObject currentPlayer;
 
     private void Awake()
@@ -27,6 +30,22 @@ public class SpawnManager : MonoBehaviour
     private void Start()
     {
         SpawnPlayer(0);
+    }
+    private void OnEnable()
+    {
+        SceneManager.sceneLoaded += OnSceneLoaded;
+    }
+
+    private void OnDisable()
+    {
+        SceneManager.sceneLoaded -= OnSceneLoaded;
+    }
+    private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        if (scene.isLoaded)
+        {
+            SpawnPlayer(targetSpawnPointIndex);
+        }
     }
     public void SpawnPlayer(int spawnPointIndex)
     {
