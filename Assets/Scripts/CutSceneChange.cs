@@ -7,6 +7,6 @@ public class CutSceneChange : MonoBehaviour
 {
     public void SceneChange()
     {
-        SceneManager.LoadScene("JGScene");
+        SceneManager.LoadScene("MainStateScene");
     }
 }
