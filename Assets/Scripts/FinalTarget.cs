@@ -2,13 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SavePoint : MonoBehaviour
+public class FinalTarget : MonoBehaviour
 {
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
         {
-            
+            GameManager2.Instance.GameEnd();
         }
     }
 }
