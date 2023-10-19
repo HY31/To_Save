@@ -14,7 +14,8 @@ public class SpawnManager : MonoBehaviour
     public SpawnPointData playerspawn;
     public int targetSpawnPointIndex;
 
-    [field: SerializeField] public CinemachineVirtualCamera vCam;
+    private CinemachineVirtualCamera vCam;
+    [field: SerializeField] public GameObject virtualCamera;
 
     private GameObject currentPlayer;
 
@@ -54,8 +55,6 @@ public class SpawnManager : MonoBehaviour
         Player player = currentPlayer.GetComponent<Player>();
         vCam.Follow = player.cameraLookPoint;
         vCam.LookAt = player.cameraLookPoint;
-        DontDestroyOnLoad(vCam);
-        
     }
     public void SpawnPlayer(int spawnPointIndex)
     {
@@ -71,7 +70,7 @@ public class SpawnManager : MonoBehaviour
             }
             playerspawn = spawnPointData;
             currentPlayer = Instantiate(playerPrefab, spawnPosition, spawnRotation);
-            
+            vCam = Instantiate(virtualCamera).GetComponent<CinemachineVirtualCamera>();
 
         }
     }
