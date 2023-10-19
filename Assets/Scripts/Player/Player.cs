@@ -2,6 +2,8 @@ using Cinemachine;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
+using UnityEngine.Windows;
 
 public class Player : MonoBehaviour
 {
@@ -40,9 +42,6 @@ public class Player : MonoBehaviour
         Health = GetComponent<Health>();
 
         stateMachine = new PlayerStateMachine(this);
-
-        // 체크포인트 초기화
-        checkPoint = new Vector3(0, 0, 0);
     }
 
     private void Start()
@@ -51,6 +50,7 @@ public class Player : MonoBehaviour
         stateMachine.ChangeState(stateMachine.IdleState);
 
         Health.OnDie += OnDie;
+        SaveCheckPoint();
     }
 
     private void Update()
@@ -70,8 +70,8 @@ public class Player : MonoBehaviour
         enabled = false;
     }
 
-    public void SaveCheckPoint(Vector3 position)
+    public void SaveCheckPoint()
     {
-        checkPoint = position;
+        checkPoint = transform.position;
     }
 }
