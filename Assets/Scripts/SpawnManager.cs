@@ -6,10 +6,10 @@ public class SpawnManager : MonoBehaviour
 {
     public static SpawnManager Instance;
 
-    public List<Transform> spawnPoints = new List<Transform>();
+    public List<SpawnPointData> spawnPointDataList = new List<SpawnPointData>();
 
     public GameObject playerPrefab;
-
+    public SpawnPointData playerspawn;
     private GameObject currentPlayer;
 
     private void Awake()
@@ -30,18 +30,18 @@ public class SpawnManager : MonoBehaviour
     }
     public void SpawnPlayer(int spawnPointIndex)
     {
-        if (spawnPointIndex >= 0 && spawnPointIndex < spawnPoints.Count)
+        if (spawnPointIndex >= 0 && spawnPointIndex < spawnPointDataList.Count)
         {
-            Transform spawnPoint = spawnPoints[spawnPointIndex];
+            SpawnPointData spawnPointData = spawnPointDataList[spawnPointIndex];
+            Vector3 spawnPosition = spawnPointData.spawnPosition;
+            Quaternion spawnRotation = spawnPointData.spawnRotation;
 
-            // 현재 플레이어가 존재하면 디스트로이
             if (currentPlayer != null)
             {
                 Destroy(currentPlayer);
             }
-
-            // 새로운 플레이어 스폰
-            currentPlayer = Instantiate(playerPrefab, spawnPoint.position, spawnPoint.rotation);
+            playerspawn = spawnPointData;
+            currentPlayer = Instantiate(playerPrefab, spawnPosition, spawnRotation);
         }
     }
 }
