@@ -52,7 +52,10 @@ public class SoundManager : MonoBehaviour
     }
     void Update()
     {
-        // PlaySE();
+        if (Input.GetMouseButtonDown(0))
+        {
+            PlaySE("Click");
+        }
     }
 
     public void PlayBgm(string soundName) 
