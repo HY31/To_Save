@@ -33,7 +33,7 @@ public class SpawnManager : MonoBehaviour
     }
     private void Start()
     {
-        SpawnPlayer(0);
+        
     }
     private void OnEnable()
     {
@@ -54,6 +54,8 @@ public class SpawnManager : MonoBehaviour
         Player player = currentPlayer.GetComponent<Player>();
         vCam.Follow = player.cameraLookPoint;
         vCam.LookAt = player.cameraLookPoint;
+        DontDestroyOnLoad(vCam);
+        
     }
     public void SpawnPlayer(int spawnPointIndex)
     {
@@ -69,6 +71,7 @@ public class SpawnManager : MonoBehaviour
             }
             playerspawn = spawnPointData;
             currentPlayer = Instantiate(playerPrefab, spawnPosition, spawnRotation);
+            
 
         }
     }
