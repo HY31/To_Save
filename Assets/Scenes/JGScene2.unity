@@ -3215,7 +3215,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   destinationSceneName: JGScene
-  spawnPointIndex: 2
+  index: 2
 --- !u!65 &100650554
 BoxCollider:
   m_ObjectHideFlags: 0
