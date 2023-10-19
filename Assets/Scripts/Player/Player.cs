@@ -1,3 +1,4 @@
+using Cinemachine;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -22,6 +23,8 @@ public class Player : MonoBehaviour
     public Health Health { get; private set; }
 
     private PlayerStateMachine stateMachine; // 행동을 관리할 스테이트 머신
+
+    [field: SerializeField] public Transform cameraLookPoint;
 
     private Vector3 checkPoint; // 체크포인트, 부활 위치
 
