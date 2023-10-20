@@ -10,7 +10,15 @@ public class UIManager : MonoBehaviour
     private Dictionary<string, GameObject> uiList = new Dictionary<string, GameObject>();
     private void Awake()
     {
-        Instance = this;
+        if (Instance == null)
+        {
+            Instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        else 
+        {
+            Destroy(gameObject);    
+        }
         InitUIList();
     }
     void InitUIList()
