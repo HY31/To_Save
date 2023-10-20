@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.Windows;
+using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviour
 {
@@ -68,10 +69,16 @@ public class Player : MonoBehaviour
     {
         Animator.SetTrigger("Die");
         enabled = false;
+        Invoke("ReTry", 2f); 
     }
 
     public void SaveCheckPoint()
     {
         checkPoint = transform.position;
+    }
+
+    public void ReTry()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 }
