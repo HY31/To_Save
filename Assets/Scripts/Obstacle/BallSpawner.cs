@@ -10,6 +10,7 @@ public class BallSpawner : MonoBehaviour
     void Start()
     {
         StartCoroutine("BallSpawn");
+        
     }
 
     IEnumerator BallSpawn()
