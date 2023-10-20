@@ -5,7 +5,7 @@ using UnityEngine;
 public class MoveFloor : MonoBehaviour
 {
     float initPositionY;
-    float initPositionX;
+    float initPositionZ;
     public float distance;
     public float turningPoint;
 
@@ -24,8 +24,8 @@ public class MoveFloor : MonoBehaviour
         }
         if (gameObject.name == "LR_Floor")
         {
-            initPositionX = transform.position.x;
-            turningPoint = initPositionX - distance;
+            initPositionZ = transform.position.z;
+            turningPoint = initPositionZ - distance;
         }
     }
 
@@ -58,24 +58,24 @@ public class MoveFloor : MonoBehaviour
     void leftRight()
     {
 
-        float currentPositionX = transform.position.x;
+        float currentPositionZ = transform.position.z;
 
-        if (currentPositionX >= initPositionX + distance)
+        if (currentPositionZ >= initPositionZ + distance)
         {
             turnSwitch = false;
         }
-        else if (currentPositionX <= turningPoint)
+        else if (currentPositionZ <= turningPoint)
         {
             turnSwitch = true;
         }
 
         if (turnSwitch)
         {
-            transform.position = transform.position + new Vector3(1, 0, 0) * moveSpeed * Time.deltaTime;
+            transform.position = transform.position + new Vector3(0, 0, 1) * moveSpeed * Time.deltaTime;
         }
         else
         {
-            transform.position = transform.position + new Vector3(-1, 0, 0) * moveSpeed * Time.deltaTime;
+            transform.position = transform.position + new Vector3(0, 0, -1) * moveSpeed * Time.deltaTime;
         }
 
     }

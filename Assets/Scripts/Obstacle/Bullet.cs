@@ -30,6 +30,7 @@ public class Bullet : MonoBehaviour
         //StartCoroutine("DelayFallBullet");
         //Rigidbody.useGravity = false;
         Rigidbody.velocity = Vector3.zero;
+        Rigidbody.rotation = Quaternion.identity;
         ObjectPool.Instance.ReturnObj(this);
     }
 
@@ -38,5 +39,12 @@ public class Bullet : MonoBehaviour
     //    Rigidbody.useGravity = true;
     //    yield return new WaitForSeconds(0.5f);
     //}
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.tag == "Player")
+        {
+            collision.gameObject.GetComponent<Health>().TakeDamage(100);
+        }
+    }
 
 }

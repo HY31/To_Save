@@ -21,7 +21,7 @@ public class HarzardCylinder : MonoBehaviour
     {
         if (collision.gameObject.tag == "Player")
         {
-            //충돌피해
+            collision.gameObject.GetComponent<Health>().TakeDamage(100);
         }
     }
 }

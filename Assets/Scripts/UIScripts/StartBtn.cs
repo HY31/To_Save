@@ -17,6 +17,6 @@ public class StartBtn : MonoBehaviour
 
    void StartScene() 
     {
-        SceneManager.LoadScene("JGScene");
+        SceneManager.LoadScene("CutScene_1");
     }
 }

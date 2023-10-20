@@ -9,6 +9,9 @@ using UnityEngine.UI;
 
 public class UiMain : MonoBehaviour
 {
+
+    public static UiMain Instance;
+
     [SerializeField] private Button playBtn;
     [SerializeField] private Button rePlayBtn;
     [SerializeField] private Button volumeBtn;
@@ -20,13 +23,37 @@ public class UiMain : MonoBehaviour
     [SerializeField] private GameObject settingPopup;
     [SerializeField] private GameObject volumePopup;
 
+
+    private bool isPaused = false;
+
     private void Awake()
     {
+        if (Instance == null)
+        {
+            Instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        else 
+        {
+            Destroy(gameObject);
+        }
         volumePopup.SetActive(false);
         settingPopup.SetActive(false);
     }
-
-    // Start is called before the first frame update
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            if (isPaused)
+            {
+                ResumeGame();
+            }
+            else
+            {
+                PauseGame();
+            }
+        }
+    }
     void Start()
     {
         playBtn.onClick.AddListener(Close);
@@ -48,10 +75,17 @@ public class UiMain : MonoBehaviour
         volumePopup.SetActive(false);
         settingPopup.SetActive(false);    
     }
-    void PauseGame() 
+    void PauseGame()
     {
+        isPaused = true;
         settingPopup.SetActive(true);
     }
+    void ResumeGame()
+    {
+        isPaused = false;
+        settingPopup.SetActive(false);
+    }
+
     void VolumePopupClose() 
     {
         volumePopup.SetActive(false);
@@ -80,7 +114,7 @@ public class UiMain : MonoBehaviour
 
     void ChangeScene() 
     {
-        //SceneManager.LoadScene("SampleScene");
+        SceneManager.LoadScene("MainStateScene");
     }
 
 
