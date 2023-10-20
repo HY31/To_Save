@@ -30,6 +30,7 @@ public class Bullet : MonoBehaviour
         //StartCoroutine("DelayFallBullet");
         //Rigidbody.useGravity = false;
         Rigidbody.velocity = Vector3.zero;
+        Rigidbody.rotation = Quaternion.identity;
         ObjectPool.Instance.ReturnObj(this);
     }
 

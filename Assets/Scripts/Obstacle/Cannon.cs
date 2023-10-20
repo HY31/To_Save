@@ -16,8 +16,8 @@ public class Cannon : MonoBehaviour
         while (true) 
         {
             Bullet bullet = ObjectPool.Instance.GetObject();
-            bullet.transform.position = transform.position;
             bullet.transform.rotation = transform.rotation;
+            bullet.transform.position = transform.position;
             yield return new WaitForSeconds(5f);
         }
     }
