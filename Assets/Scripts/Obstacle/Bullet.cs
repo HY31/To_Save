@@ -16,6 +16,7 @@ public class Bullet : MonoBehaviour
     private void Start()
     {
         DestoryBulletInvoke();
+        
     }
     private void Update()
     {
@@ -24,6 +25,7 @@ public class Bullet : MonoBehaviour
     public void DestoryBulletInvoke()//³«ÇÏ ´ë±â
     {
         Invoke(nameof(DestroyBullet), 3f);
+        SoundManager.Instance.PlaySE("BulletSound");
     }
     private void DestroyBullet()//³«ÇÏ
     {
@@ -32,6 +34,7 @@ public class Bullet : MonoBehaviour
         Rigidbody.velocity = Vector3.zero;
         Rigidbody.rotation = Quaternion.identity;
         ObjectPool.Instance.ReturnObj(this);
+        
     }
 
     //IEnumerator DelayFallBullet()
