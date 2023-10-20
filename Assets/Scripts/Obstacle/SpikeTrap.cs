@@ -29,6 +29,7 @@ public class SpikeTrap : MonoBehaviour
             if (onAttack)
             {
                 StartCoroutine("Attack");
+                collision.gameObject.GetComponent<Health>().TakeDamage(100);
                 //+ 플레이어에게 데미지 입히는 메서드
             }
         }
