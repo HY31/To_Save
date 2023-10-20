@@ -4,11 +4,20 @@ using UnityEngine;
 
 public class FinalTarget : MonoBehaviour
 {
+    [SerializeField] private GameObject endingCredit;
+    private AudioSource _audio;
+
+    private void Awake()
+    {
+        _audio = GetComponent<AudioSource>();
+    }
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
         {
-            GameManager2.Instance.GameEnd();
+            endingCredit.SetActive(true);
+            _audio.Play();
         }
     }
 }
